@@ -63,7 +63,7 @@ function processRequest(req, res) {
     if (req.method.toUpperCase() === "OPTIONS") {
         return writeResponse(res, 204);
     }
-
+        console.log(req.url);
     var result = config.fetch_regex.exec(req.url);
         console.log(result)
 
