@@ -16,6 +16,7 @@ var publicIP;
 publicAddressFinder(function (err, data) {
     if (!err && data) {
         publicIP = data.address;
+        console.log("the public ip is " + publicIP);
     }
 });
 
@@ -72,7 +73,7 @@ function processRequest(req, res) {
 
         try {
             remoteURL = url.parse(decodeURI(result[1]));
-            console.log(remoteURL);
+            console.log("the remoteURL is"+remoteURL);
         }
         catch (e) {
             return sendInvalidURLResponse(res);
@@ -181,6 +182,7 @@ else
         var clientIP = getClientAddress(req);
 
         req.clientIP = clientIP;
+        console.log(req);
 
         // Log our request
         if (config.enable_logging) {
