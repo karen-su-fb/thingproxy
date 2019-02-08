@@ -53,6 +53,7 @@ function sendTooBigResponse(res) {
 }
 
 function getClientAddress(req) {
+    console.log(req.url);
     return (req.headers['x-forwarded-for'] || '').split(',')[0]
         || req.connection.remoteAddress;
 }
@@ -73,7 +74,6 @@ function processRequest(req, res) {
 
         try {
             remoteURL = url.parse(decodeURI(result[1]));
-            console.log("the remoteURL is"+remoteURL);
         }
         catch (e) {
             return sendInvalidURLResponse(res);
@@ -181,8 +181,10 @@ else
 
         var clientIP = getClientAddress(req);
 
+
         req.clientIP = clientIP;
-        console.log(req);
+
+        console.log("the client ip is " + clientIP);
 
         // Log our request
         if (config.enable_logging) {
