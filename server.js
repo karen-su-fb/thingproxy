@@ -174,6 +174,9 @@ else
 {
     http.createServer(function (req, res) {
 
+        console.log(req);
+        console.log("raw url from client" +req.url);
+
         // Process AWS health checks
         if (req.url === "/health") {
             return writeResponse(res, 200);
@@ -183,8 +186,6 @@ else
 
 
         req.clientIP = clientIP;
-
-        console.log("the client ip is " + clientIP);
 
         // Log our request
         if (config.enable_logging) {
